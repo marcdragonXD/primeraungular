@@ -1,0 +1,40 @@
+<h1>Directivas Deportes component</h1>
+
+<!-- Bucle @for para los números con clases par e impar -->
+<ul>
+    @for (num of numeros; track num){
+        <li [class.par]="num % 2 == 0" [class.impar]="num % 2 == 1">
+            {{num}}
+        </li>
+    }
+</ul>
+
+<!-- Bucle @for con estilos en línea de color -->
+@for (num of numeros; track num){
+    <h6 [style.color]="num % 2 == 0 ? 'green' : 'red'">
+        {{num}}
+    </h6>
+}
+
+<h2>Número de deportes: {{sports.length}}</h2>
+
+<!-- Condicionales de deportes -->
+<div *ngIf="sports.length < 5; else condicionelse">
+    <p style="color: red">
+        Tenemos menos de 5 deportes
+    </p>
+</div>
+
+<ng-template #condicionelse>
+    <p style="color: blue">
+        Tienes más de 5 deportes!!!
+    </p>
+</ng-template>
+
+<ul>
+    @for (deporte of sports; track deporte){
+        <li>
+            {{deporte}}
+        </li>
+    }
+</ul>
